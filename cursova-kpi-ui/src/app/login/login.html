@@ -1,0 +1,26 @@
+<form method="post">
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label><b>Login</b>
+      <input type="text" [(ngModel)]="username" placeholder="Enter username" name="username" required>
+    </label>
+
+    <label><b>Password</b>
+      <input type="password" [(ngModel)]="user.password" placeholder="Enter Password" name="password" required>
+    </label>
+
+    <button type="submit" (click)="login()">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password</a>?</span>
+    <span class="reg"><a routerLink="/registration">Registration</a></span>
+  </div>
+</form>
