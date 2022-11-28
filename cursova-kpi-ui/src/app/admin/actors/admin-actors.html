@@ -1,0 +1,23 @@
+<div class="navbar">
+  <a routerLink="/admin/createFilm">Create film</a>
+  <a routerLink="/admin/createSerial">Create serial</a>
+  <a routerLink="/admin/films">Films</a>
+  <a routerLink="/admin/serials">Serials</a>
+  <a routerLink="/admin/genres">Genres</a>
+  <a class="active" routerLink="/admin/actors">Actors</a>
+</div>
+
+<table id="actors">
+  <tr>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let actor of actors">
+    <td>{{actor.name}}</td>
+  </tr>
+  <tr>
+    <div class="container">
+      <input type="text" placeholder="New actor name" [(ngModel)]="createActorRequest.name"/>
+      <input type="submit" (click)="createActor()">
+    </div>
+  </tr>
+</table>

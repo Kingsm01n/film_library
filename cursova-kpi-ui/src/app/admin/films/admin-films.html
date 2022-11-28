@@ -1,0 +1,25 @@
+<div class="navbar">
+  <a routerLink="/admin/createFilm">Create film</a>
+  <a routerLink="/admin/createSerial">Create serial</a>
+  <a class="active" routerLink="/admin/films">Films</a>
+  <a routerLink="/admin/serials">Serials</a>
+  <a routerLink="/admin/genres">Genres</a>
+  <a routerLink="/admin/actors">Actors</a>
+</div>
+
+<table id="films">
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Genres</th>
+    <th>Actors</th>
+  </tr>
+  <tr *ngFor="let film of films" (click)="edit(film)">
+    <td id="{{film.id}}"><img src="{{film.imgSrc}}"/></td>
+    <td>{{film.name}} <span class="badge">{{film.rating}}</span></td>
+    <td>{{film.description}}</td>
+    <td>{{film.genresNames}}</td>
+    <td>{{film.actorsNames}}</td>
+  </tr>
+</table>
