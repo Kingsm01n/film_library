@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {LoginService} from './login.service';
 import {UserLoginRequest} from './user.login.request';
 import {Router} from '@angular/router';
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'login-component',
@@ -12,7 +13,6 @@ import {Router} from '@angular/router';
 export class LoginComponent {
 
   user: UserLoginRequest;
-  username: string | undefined;
 
   constructor(private serv: LoginService, private router: Router) {
     this.user = new UserLoginRequest();
@@ -22,10 +22,11 @@ export class LoginComponent {
     console.log(this.user)
     this.serv.login(this.user).subscribe((data: any) => {
       console.log(data)
-      if (data.status == "OK") {
-        this.router.navigate(["tournaments"])
+      localStorage.setItem("Authorization", "Bearer " + data.token)
+      if (data.role == "ADMIN") {
+        this.router.navigate(["admin/films"])
       } else {
-        alert(data.message)
+        this.router.navigate(["home"])
       }
     })
   }

@@ -2,6 +2,7 @@ package com.kingsm01n.kpicursova.controller;
 
 import com.kingsm01n.kpicursova.dto.UserDto;
 import com.kingsm01n.kpicursova.entity.User;
+import com.kingsm01n.kpicursova.entity.enums.Role;
 import com.kingsm01n.kpicursova.mapper.UserMapper;
 import com.kingsm01n.kpicursova.repository.UserRepository;
 import com.kingsm01n.kpicursova.security.JwtTokenUtil;
@@ -45,11 +46,7 @@ public class AuthController {
             User user = (User) authenticate.getPrincipal();
 
             return ResponseEntity.ok()
-                .header(
-                    HttpHeaders.AUTHORIZATION,
-                    jwtTokenUtil.generateToken(user)
-                )
-                .body(userMapper.entityToDto(user));
+                .body(userMapper.entityToDto(user, jwtTokenUtil.generateToken(user)));
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -59,6 +56,7 @@ public class AuthController {
     @ResponseStatus(HttpStatus.CREATED)
     public void signup(@RequestBody @Valid UserDto dto) {
         User user = userMapper.dtoToEntity(dto);
+        user.setRole(Role.USER);
 
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
 

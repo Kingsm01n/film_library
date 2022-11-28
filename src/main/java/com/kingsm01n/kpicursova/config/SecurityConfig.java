@@ -1,7 +1,9 @@
-package com.kingsm01n.kpicursova.security;
+package com.kingsm01n.kpicursova.config;
 
 import com.kingsm01n.kpicursova.repository.UserRepository;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kingsm01n.kpicursova.security.JwtTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -9,6 +9,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   createUser(user: UserRegistrRequest) {
-    return this.http.put(this.url, user);
+    return this.http.post(this.url, user);
   }
 }

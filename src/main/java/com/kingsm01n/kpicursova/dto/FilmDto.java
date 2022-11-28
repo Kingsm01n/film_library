@@ -18,5 +18,6 @@ public class FilmDto implements Serializable {
     private final List<Long> actorIds;
     private final byte[] trailer;
     private final byte[] video;
+    private final byte[] image;
     private final List<Long> commentIds;
 }

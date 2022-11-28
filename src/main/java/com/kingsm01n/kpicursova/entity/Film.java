@@ -40,5 +40,6 @@ public class Film {
 
     private byte[] trailer;
     private byte[] video;
+    private byte[] image;
 
 }
