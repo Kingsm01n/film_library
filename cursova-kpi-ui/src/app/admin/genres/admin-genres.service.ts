@@ -5,7 +5,7 @@ import {CreateGenreRequest} from "./create-genre.request";
 @Injectable()
 export class AdminGenresService {
 
-  private url: string = "http://localhost:8080/api/v1/";
+  private url: string = "http://localhost:8081/api/v1/";
 
   constructor(private http: HttpClient) {
   }

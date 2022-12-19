@@ -6,7 +6,9 @@ import com.kingsm01n.kpicursova.entity.enums.Role;
 import com.kingsm01n.kpicursova.mapper.UserMapper;
 import com.kingsm01n.kpicursova.repository.UserRepository;
 import com.kingsm01n.kpicursova.security.JwtTokenUtil;
+
 import javax.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -37,16 +39,16 @@ public class AuthController {
     public ResponseEntity<UserDto> login(@RequestBody @Valid UserDto dto) {
         try {
             Authentication authenticate = authenticationManager
-                .authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                        dto.getUsername(), dto.getPassword()
-                    )
-                );
+                    .authenticate(
+                            new UsernamePasswordAuthenticationToken(
+                                    dto.getUsername(), dto.getPassword()
+                            )
+                    );
 
             User user = (User) authenticate.getPrincipal();
 
             return ResponseEntity.ok()
-                .body(userMapper.entityToDto(user, jwtTokenUtil.generateToken(user)));
+                    .body(userMapper.entityToDto(user, jwtTokenUtil.generateToken(user)));
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -56,7 +58,9 @@ public class AuthController {
     @ResponseStatus(HttpStatus.CREATED)
     public void signup(@RequestBody @Valid UserDto dto) {
         User user = userMapper.dtoToEntity(dto);
-        user.setRole(Role.USER);
+        if (dto.getRole() == null) {
+            user.setRole(Role.USER);
+        }
 
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
 

@@ -27,6 +27,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, HttpClientModule],
+  exports: [RouterModule],
   declarations: [AppComponent, LoginComponent, RegistrationComponent, AdminCreateFilmComponent, AdminFilmsComponent, AdminGenresComponent, AdminActorsComponent, AdminEditFilmComponent],
   bootstrap: [AppComponent]
 })

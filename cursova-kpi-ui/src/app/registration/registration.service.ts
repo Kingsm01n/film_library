@@ -5,7 +5,7 @@ import { UserRegistrRequest } from './user.registration.request';
 @Injectable()
 export class RegistrationService {
 
-  private url = "http://localhost:8080/api/v1/auth/signup";
+  private url = "http://localhost:8081/api/v1/auth/signup";
   constructor(private http: HttpClient) { }
 
   createUser(user: UserRegistrRequest) {
