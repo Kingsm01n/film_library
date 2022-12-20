@@ -16,7 +16,7 @@ public class WebMvcConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry
                         .addMapping("/**")
-                        .allowedOrigins("http://localhost:4200", "http://localhost:80", "http://localhost")
+//                        .allowedOrigins("http://localhost:4200", "http://localhost:80", "http://localhost", "http://172.25.112.128")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH");
             }
         };

@@ -10,3 +10,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/kpi-cursova
     username: postgres
 jwt.secret: javainuse
+server:
+  port: 9090

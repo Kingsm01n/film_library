@@ -5,7 +5,7 @@ import {CreateFilmRequest} from "./create-film.request";
 @Injectable()
 export class AdminCreateFilmService {
 
-  private url: string = "http://localhost:8081/api/v1/";
+  private url: string = "http://172.25.112.128/api/v1/";
 
   constructor(private http: HttpClient) {
   }
