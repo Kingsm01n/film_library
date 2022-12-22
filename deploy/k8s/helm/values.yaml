@@ -1,0 +1,9 @@
+postgresql:
+  fullnameOverride: postgres
+  postgresqlDatabase: "postgres"
+  postgresqlUsername: "postgres"
+  postgresqlPassword: "postgres"
+  postgresqlPostgresPassword: "postgres"
+  persistence:
+    size: 5Gi
+    mountPath: /var/lib/postgresql/data
